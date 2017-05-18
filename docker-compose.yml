@@ -36,11 +36,11 @@ services:
        CKAN_SITE_URL: "${CKAN_SITE_URL}"
        CKAN_SITE_ID: "default"
        CKAN_STORAGE_PATH: "/var/lib/ckan"
-       CKAN_DATAPUSHER_URL: "${CKAN_SITE_URL}:8000"
+       CKAN_DATAPUSHER_URL: "http://datapusher:8800"
        CKAN_SOLR_URL: "http://solr:8983/solr/${POSTGRES_CKAN_DBNAME}"
        CKANEXT__CLOUDSTORAGE__DRIVER: "${CLOUDSTORAGE_DRIVER}"
        CKANEXT__CLOUDSTORAGE__CONTAINER_NAME: "${CLOUDSTORAGE_NAME}"
-       CKANEXT__CLOUDSTORAGE__DRIVER_OPTIONS: "${CLOUDSTORAGE_OPTIONS}"       
+       CKANEXT__CLOUDSTORAGE__DRIVER_OPTIONS: "${CLOUDSTORAGE_OPTIONS}"
        SOLR_URL: "http://solr:8983/solr/${POSTGRES_CKAN_DBNAME}"
        EMAIL_TO: "${EMAIL_TO}"
        ERROR_EMAIL_FROM: "${ERROR_EMAIL_FROM}"
@@ -53,7 +53,7 @@ services:
     container_name: ckan_datapusher
     build: ./datapusher/
     ports:
-     - "8000:8000"
+     - "8800:8800"
     depends_on:
      - ckan
     environment:
